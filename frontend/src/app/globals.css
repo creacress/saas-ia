@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-black text-cyan-300 antialiased;
+}
+
+h1, h2, h3, h4 {
+  @apply font-bold text-cyan-300;
+}
+
+a {
+  @apply text-cyan-400 hover:underline transition;
+}
+
+button {
+  @apply bg-cyan-500 text-black px-4 py-2 rounded hover:bg-cyan-400 transition;
+}

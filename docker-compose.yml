@@ -1,0 +1,35 @@
+services:
+  backend:
+    build: ./backend
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+
+  worker:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    command: celery -A app.tasks.celery_worker worker --loglevel=info
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.2.1
+    ports:
+    - "5000:5000"
+    volumes:
+    - ./mlruns:/mlflow/mlruns
+    command: mlflow ui --host 0.0.0.0
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
