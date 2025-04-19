@@ -1,1 +1,6 @@
 .env
+backend/__pycache__/main.cpython-310.pyc
+backend/app/api/__pycache__/router.cpython-310.pyc
+.gitignore
+backend/ml/__pycache__/training.cpython-310.pyc
+backend/app/tasks/__pycache__/celery_worker.cpython-310.pyc
